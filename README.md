@@ -6,6 +6,8 @@ starting an application with NodeJS
 Download the repository to a folder with superuser permissions and
 install the necessary dependencies:
 ```sh
+git clone https://github.com/RodnyE/ds-builder.git
+cd ds-builder
 npm install
 npm link
 ```
