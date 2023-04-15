@@ -1,0 +1,22 @@
+{
+    "name": "test",
+    "version": "1.01",
+    "ds_version": "2.00",
+    "root": "./droid",
+    "main": "./droid/app.js",
+    "icon": "./droid/icon.png",
+    "folders": {
+        "Html": "./src"
+    },
+    "dist": "",
+    "build": {
+        "manifest": {
+            "minSdkVersion": 23,
+            "targetSdkVersion": 28,
+            "debuggable": false,
+            "homeScreen": false,
+            "removePermissions": "WRITE_EXTERNAL_STORAGE"
+        },
+        "autoPermissions": false
+    }
+}
