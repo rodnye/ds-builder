@@ -9,7 +9,7 @@ const uglify = require("uglify-js");
 const babel = require("@babel/core");
 const babelOptions = {
     presets: [
-        require("@babel/preset-env")
+        [require("@babel/preset-env"), {modules:false}]
     ],
     plugins: [
         require("@babel/plugin-transform-arrow-functions"),
@@ -22,7 +22,12 @@ const babelOptions = {
 
 const processArgs = require("../utils/args.js");
 const Json = require("../utils/json.js");
-const { isDirectory, copydirSync, mkdirRecursiveSync } = require("../utils/fs.js");
+const { 
+    isDirectory, 
+    copydirSync, 
+    rmdirSync,
+    mkdirRecursiveSync
+} = require("../utils/fs.js");
 
 /**
  * join only relatives url
@@ -36,7 +41,8 @@ path.joinRelOnly = function (root, dir) {
 
 const cmds = ["build"];
 const flags = [
-    "--production", "--prod"
+    "--prod", "--production",
+    "--no-reset",
 ];
 
 function exec (argv) {
@@ -46,6 +52,8 @@ function exec (argv) {
     const dsMap = new Json(path.join(cwd, "/droidscript.json")).data;
     const dist = path.join(dsMap.dist || cfg.DEFAULT_DIST, dsMap.name);
     
+    // reset dist
+    if (!argsMap["--no-reset"]) rmdirSync(dist);
     
     // generate folders
     mkdirRecursiveSync(path.join(dist, "/Img"));

@@ -4,19 +4,35 @@ const fs = require("fs");
 
 
 // copy dir
-function copydirSync (currentDir, targetDir) {
-    recursive("");
-    function recursive (dir) {
-        let realDir = path.join(currentDir, dir);
-        let copyDir = path.join(targetDir, dir);
+function copydirSync (folderPath, destPath) {
+    
+    mkdirRecursiveSync(destPath);
+    
+    if (fs.existsSync(folderPath)) fs.readdirSync(folderPath)
+      .forEach(fileName => {
+        const curPath = path.join(folderPath, fileName);
+        const copyPath = path.join(destPath, fileName);
 
-        if (isDirectory(realDir)) {
-            if (!isDirectory(copyDir)) fs.mkdirSync(copyDir, {recursive: true});
-            for (let i of fs.readdirSync(realDir)) recursive(path.join(dir, i));
-        }
-        else fs.copyFileSync(realDir, copyDir);
-    }
+        if (isDirectory(curPath)) copydirSync(curPath, copyPath);
+        else fs.copyFileSync(curPath, copyPath);
+      }
+    );
 }
+
+
+
+// remove folder recursively
+function rmdirSync (folderPath) {
+    if (fs.existsSync(folderPath)) fs.readdirSync(folderPath).forEach(fileName => {
+        const curPath = path.join(folderPath, fileName);
+        
+        if (isDirectory(curPath)) rmdirSync(curPath);
+        else fs.unlinkSync(curPath);
+    });
+    
+    fs.rmdirSync(folderPath);
+}
+
 
 
 // make dir recursively 
@@ -28,6 +44,7 @@ function mkdirRecursiveSync (dir) {
 }
 
 
+
 // verify is a directory
 function isDirectory (dir) {
     return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
@@ -35,6 +52,7 @@ function isDirectory (dir) {
 
 module.exports = {
     copydirSync,
+    rmdirSync,
     mkdirRecursiveSync,
     isDirectory,
 }
