@@ -4,11 +4,12 @@ starting an application with NodeJS
 
 ## Setup
 Download the repository to a folder with superuser permissions and
-install the necessary dependencies:
+install the necessary dependencies.  
+Copy and run the following command: 
 ```sh
-git clone https://github.com/RodnyE/ds-builder.git
-cd ds-builder
-npm install
+git clone https://github.com/RodnyE/ds-builder.git &&
+cd ds-builder &&
+npm install &&
 npm link
 ```
 After these steps you will be able to use the `ds-builder` command in your terminal.
