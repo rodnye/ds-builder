@@ -38,7 +38,7 @@ function exec (argv) {
     //
     // --template
     //
-    if (argsMap["--template"] || argsMap["-T"]) {
+    if (argsMap["--template"] || argsMap["-t"]) {
         // copy droid folder
         copydirSync(
             path.join(cfg.TEMPLATE, "/droid"),
