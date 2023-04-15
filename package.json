@@ -2,7 +2,7 @@
   "name": "ds-builder",
   "version": "1.0.0",
   "main": "src/index.js",
-  "bin": "bin/index.js",
+  "bin": "bin/ds-builder",
   "dependencies": {
     "@babel/core": "^7.21.4",
     "@babel/plugin-transform-arrow-functions": "^7.20.7",
