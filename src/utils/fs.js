@@ -6,24 +6,26 @@ const fs = require("fs");
 // copy dir
 function copydirSync (folderPath, destPath) {
     
+    if (!fs.existsSync(folderPath)) return;
     mkdirRecursiveSync(destPath);
     
-    if (fs.existsSync(folderPath)) fs.readdirSync(folderPath)
-      .forEach(fileName => {
+    fs.readdirSync(folderPath).forEach(fileName => {
         const curPath = path.join(folderPath, fileName);
         const copyPath = path.join(destPath, fileName);
 
         if (isDirectory(curPath)) copydirSync(curPath, copyPath);
         else fs.copyFileSync(curPath, copyPath);
-      }
-    );
+    });
 }
 
 
 
 // remove folder recursively
 function rmdirSync (folderPath) {
-    if (fs.existsSync(folderPath)) fs.readdirSync(folderPath).forEach(fileName => {
+    
+    if (!fs.existsSync(folderPath)) return;
+    
+    fs.readdirSync(folderPath).forEach(fileName => {
         const curPath = path.join(folderPath, fileName);
         
         if (isDirectory(curPath)) rmdirSync(curPath);
