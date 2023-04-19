@@ -1,7 +1,7 @@
 {
     "delay": 1000,
     "watch": [
-        "droid/app.js",
+        "app.js",
         "src/**/*"
     ],
     "ext": "html,css,js",

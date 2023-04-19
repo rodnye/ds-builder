@@ -31,7 +31,7 @@ function exec (argv) {
     else appName = dsJson.data.name;
     
     dsJson.data.dist = cfg.DEFAULT_DIST;
-    if (pkg.data.version) dsJson.data.version = pkgMap.version;
+    if (pkg.data.version) dsJson.data.version = pkg.data.version;
     
     dsJson.jsonDir = path.join(cwd, "/droidscript.json");
     dsJson.save();
