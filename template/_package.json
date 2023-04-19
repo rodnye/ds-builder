@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "start": "node node_modules/ds-builder/bin/ds-builder build",
+        "build": "node node_modules/ds-builder/bin/ds-builder build --prod",
+        "watch": "node node_modules/nodemon/bin/nodemon.js"
+    },
+    "dependencies": {
+        "ds-builder": "github:rodnye/ds-builder"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.21"
+    }
+}

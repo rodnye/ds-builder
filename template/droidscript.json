@@ -1,9 +1,9 @@
 {
     "name": "test",
-    "version": "1.01",
-    "ds_version": "2.00",
+    "version": "1.00",
+    "ds_version": "2.09",
+    "main": "app.js",
     "root": "./droid",
-    "main": "./droid/app.js",
     "icon": "./droid/icon.png",
     "folders": {
         "Html": "./src"

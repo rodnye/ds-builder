@@ -5,7 +5,7 @@ starting an application with NodeJS
 ## Setup
 Copy and run the following command: 
 ```sh
-npm install -g git+https://github.com/RodnyE/ds-builder.git
+npm install -g ds-builder@github:rodnye/ds-builder
 ```
 After that step you will be able to use the `ds-builder` command in your terminal.
 
@@ -17,6 +17,11 @@ ds-builder init [<app-name>] [flags]
 This initializes a `droidscript.json` file needed to compile.
 The name of the application, if not specified, will be taken 
 by default from the `package.json`
+
+Recomended:
+```sh
+ds-builder init -t
+```
 
 Flags:
 | flags | desc |

@@ -2,6 +2,16 @@
 const path = require("path");
 const fs = require("fs");
 
+// copy file 
+function copyFileSync (file, destFile) {
+    
+    if (!fs.existsSync(file)) return;
+    mkdirRecursiveSync(
+        path.join(destFile, "..")
+    );
+
+    fs.copyFileSync(file, destFile);
+}
 
 // copy dir
 function copydirSync (folderPath, destPath) {
@@ -54,6 +64,7 @@ function isDirectory (dir) {
 
 module.exports = {
     copydirSync,
+    copyFileSync,
     rmdirSync,
     mkdirRecursiveSync,
     isDirectory,
